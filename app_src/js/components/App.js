@@ -76,14 +76,14 @@ class App extends Component {
 		}
 	}
 
-	previewReddit(val) {
+	strPreview(val) {
 		this.setState({ reddit: val });
 	}
 
 	render() {
 		return (
 			<div>
-				<Header reddit={this.state.reddit} previewReddit={this.previewReddit.bind(this)} />
+				<Header reddit={this.state.reddit} strPreview={this.strPreview.bind(this)} />
 				<CardGrid grid={this.state.grid} />
 			</div>
 		);

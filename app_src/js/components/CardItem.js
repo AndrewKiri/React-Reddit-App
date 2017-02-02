@@ -9,7 +9,7 @@ class CardItem extends Component {
 						<img src={this.props.card.image} />
 					</div>
 					<div className="card-content">
-						<p>INDEX: {this.props.index} TITLE: {this.props.card.title}</p>
+						<p>{this.props.card.title}</p>
 					</div>
 					<div className="card-action">
 						<a target="_blank" href={this.props.card.url}>Watch</a>
