@@ -6,14 +6,14 @@ class CardGrid extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			grid: this.props.grid.map((card) => <Card data={card} />)
+			grid: this.props.grid.map((card, index) => <Card key={card.id.toString()} card={card} index={index+1}/>)
 		}
 	}
 	
 	render() {
 		return (
-			<div>
-
+			<div className="row">
+				{this.state.grid}
 			</div>
 		);
 	}
