@@ -4,11 +4,15 @@ import Form from './Form';
 
 
 class Header extends Component {
+	constructor(props) {
+		super(props);
+	}
+	
 	render() {
 		return (
 			<div>
 				<RedditString name={this.props.reddit} />
-				<Form strPreview={this.props.strPreview} />
+				<Form setGrid={this.props.setGrid} strPreview={this.props.strPreview} />
 			</div>	
 		);
 	}

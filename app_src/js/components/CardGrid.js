@@ -5,15 +5,18 @@ import Card from './Card';
 class CardGrid extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			grid: this.props.grid.map((card, index) => <Card key={card.id.toString()} card={card} index={index+1}/>)
-		}
+	}
+
+	buildGrid(val) {
+		return (
+			val.map((card, index) => <Card key={card.data.id.toString()} card={card} index={index + 1} />)
+		);
 	}
 	
 	render() {
 		return (
 			<div className="row">
-				{this.state.grid}
+				{this.buildGrid(this.props.grid)}
 			</div>
 		);
 	}
