@@ -16,8 +16,23 @@ class App extends Component {
 		this.setState({ reddit: val });
 	}
 
-	setGrid(val) {
-		this.setState({ grid: val });
+	setGrid(data) {
+		$.get(data.url, function (response) {
+			this.setState({
+				grid: response.data.children,
+				lastData: data
+			});
+			if (data.refresh === true) {
+				if (!this.timer) {
+					this.timer = setInterval(this.setGrid.bind(this,this.state.lastData),10000);
+				} else {
+					clearInterval(this.timer);
+					this.timer = setInterval(this.setGrid.bind(this,this.state.lastData),10000);
+				}	
+			} else if(this.timer) {
+				clearInterval(this.timer);
+			}
+		}.bind(this))
 	}
 
 	render() {

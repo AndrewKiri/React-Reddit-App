@@ -12,13 +12,12 @@ class Form extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		var input = $('#input').val(),
-			refresh = $('#checkbox').val(),
-			url = "https://www.reddit.com/r/" + input + "/.json",
-			that = this.props;
-		$.get(url, function (response) {
-			that.setGrid(response.data.children);
-		})
+		var data = {
+			input: $('#input').val(),
+			refresh: $('#refresh').prop('checked'),
+			url: "https://www.reddit.com/r/" + $('#input').val() + "/.json"
+		}
+		this.props.setGrid(data);
 	}	
 
 	render() {
@@ -32,14 +31,12 @@ class Form extends Component {
 					</div>
 					<div className="row">
 						<div className="col s6 offset-s3">
-							<div className="switch right">
-								<label>
-								Off
-								<input type="checkbox" id="checkbox" />
-								<span className="lever"></span>
-								Auto-Refresh
-								</label>
-							</div>
+							<input type="checkbox" id="refresh" name="refresh" value="true"/>
+							<label for="refresh">Auto-Refresh</label>		
+						</div>	
+					</div>
+					<div className="row">
+						<div className="col s6 offset-s3">
 							<button id="submitBtn" className="btn waves-effect waves-light offset-s2" type="submit" name="action">
 								submit<i className="material-icons right">send</i>
 							</button>
